@@ -1,9 +1,10 @@
 package org.jvnet.inflector;
-import org.jvnet.inflector.Pluralizer;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+
+import static org.jvnet.inflector.Noun.pluralOf;
 
 public class PluralizerTest extends TestCase {
 
@@ -16,10 +17,9 @@ public class PluralizerTest extends TestCase {
     this.plural = plural.replaceFirst("\\|.*", ""); // default to anglicized
   }
 
-  @@Override
+  @Override
   protected void runTest() {
-    Pluralizer pluralizer = new Pluralizer();
-    assertEquals(plural, pluralizer.pluralizeNoun(singular));
+    assertEquals(plural, pluralOf(singular));
   }
 
   public static Test suite() {

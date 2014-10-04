@@ -1,20 +1,14 @@
 package org.jvnet.inflector;
-import org.jvnet.inflector.Pluralizer;
 
 import junit.framework.TestCase;
 
+import static org.jvnet.inflector.Noun.pluralOf;
+
 public class PluralizerEdgeCasesTest extends TestCase {
-
-  private Pluralizer pluralizer;
-
-  @Override
-  protected void setUp() {
-    pluralizer = new Pluralizer();
-  }
 
   public void testNull() {
     try {
-      pluralizer.pluralizeNoun(null);
+      pluralOf(null);
       fail("Should throw NullPointerException");
     } catch (NullPointerException e) {
       // Expected
@@ -22,16 +16,16 @@ public class PluralizerEdgeCasesTest extends TestCase {
   }
 
   public void testEmptyString() {
-    assertEquals("", pluralizer.pluralizeNoun(""));
+    assertEquals("", pluralOf(""));
   }
 
   public void testBlankString() {
     String blank = " \r\n\t";
-    assertEquals(blank, pluralizer.pluralizeNoun(blank));
+    assertEquals(blank, pluralOf(blank));
   }
 
   public void testLeadingAndTrailingWhitespace() {
-    assertEquals("  apples ", pluralizer.pluralizeNoun("  apple "));
+    assertEquals("  apples ", pluralOf("  apple "));
   }
 
 
